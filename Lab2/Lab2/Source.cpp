@@ -7,31 +7,38 @@ int st[10];
 int n;
 
 
-void tipar(int p)
+void Print()
 {
-	for (int i = 0; i <= p; i++)
-	{
-		cout << st[i];
-	}
-	cout << endl;
-
+	Graph g(n);
+	int k = 0;
+	for(int i=0;i<n;i++)
+		for (int j = i + 1; j < n; j++)
+		{
+			if (st[k++] == 1)
+			{
+				g.AddEdge(i, j);
+			}
+		}
+	g.Print();
 }
 
-void back(int p)
+
+void Backtrack(int p)
 {
 	for (int i = 0; i <= 1; i++)
 	{
 		st[p] = i;
-		if (p == n - 1)
-			tipar(p);
+		if (p == (n*n-n)/2-1)
+			Print();
 		else
-			back(p + 1);
+			Backtrack(p + 1);
 	}
 }
 
 void main()
 {
-	Graph g(3);
-	g.AddEdge(0, 1);
-	g.AddEdge(0, 2);
+	
+	cin >> n;
+	Backtrack(0);
+
 }
