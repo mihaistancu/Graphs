@@ -1,5 +1,7 @@
 #include <iostream>
+#include "Graph.cpp"
 using namespace std;
+
 
 int st[10];
 int n;
@@ -29,6 +31,7 @@ void back(int p)
 
 void main()
 {
-	cin >> n;
-	back(0);
+	Graph g(3);
+	g.AddEdge(0, 1);
+	g.AddEdge(0, 2);
 }
